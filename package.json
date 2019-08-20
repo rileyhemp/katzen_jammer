@@ -38,5 +38,8 @@
 	"bugs": {
 		"url": "https://github.com/chrissilich/circus-starter/issues"
 	},
-	"homepage": "https://github.com/chrissilich/circus-starter#readme"
+	"homepage": "https://github.com/chrissilich/circus-starter#readme",
+	"dependencies": {
+		"matter-js": "^0.14.2"
+	}
 }

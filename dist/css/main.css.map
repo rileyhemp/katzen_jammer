@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":""}
+{"version":3,"sources":["main.scss","main.css"],"names":[],"mappings":"AAAA,qCAAO;AAEP;CACI,kCAAkC;ACAtC","file":"main.css","sourcesContent":["@import \"../../dist/css/reset.css\";\r\n\r\ncanvas {\r\n    background-color: black !important;\r\n}","@import url(../../dist/css/reset.css);\ncanvas {\n\tbackground-color: black !important;\n}\n"]}

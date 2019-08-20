@@ -1,2 +1,6 @@
+@import url(../../dist/css/reset.css);
+canvas {
+	background-color: black !important;
+}
 
 /*# sourceMappingURL=main.css.map */
