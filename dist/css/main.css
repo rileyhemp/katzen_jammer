@@ -1,6 +1,20 @@
 @import url(../../dist/css/reset.css);
 canvas {
-	background-color: black !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+
+body {
+	background-image: url("../../dist/img/cat.png");
+	overflow: hidden;
+}
+
+.home {
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+	overflow-y: scroll;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,5 +1,16 @@
 @import "../../dist/css/reset.css";
 
 canvas {
-    background-color: black !important;
+    background-color: rgba(0,0,0,0) !important;
+    transition: all .5s;
+}
+
+body {
+    background-image: url('../../dist/img/cat.png');
+    overflow: hidden;
+}
+
+.home {
+    transform: scale(1);
+    overflow-y: scroll;
 }

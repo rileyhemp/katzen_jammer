@@ -17,16 +17,16 @@ let logos = [{
                 x: 160,
                 y: 160,
                 r: 150,
-                vx: 3,
-                vy: 5,
+                vx: 5,
+                vy: 4,
                 fill: "red"
             },
             {
                 x: 500,
                 y: 500,
                 r: 150,
-                vx: 3,
-                vy: 5,
+                vx: -3,
+                vy: 4,
                 fill: "white"
             }]
 
@@ -54,18 +54,41 @@ function draw(){
 
     for ( let i = 0; i<logos.length; i++ ) {
         //Uses the distance formula to determine if the circles are touching.
-        if ( Math.sqrt( Math.pow(logos[1].x-logos[0].x, 2) + Math.pow(logos[1].y-logos[0].y, 2) ) <= logos[1].r + logos[0].r ) {
+        if ( Math.sqrt( Math.pow(logos[1].x-logos[0].x, 2) + Math.pow(logos[1].y-logos[0].y, 2) ) < logos[1].r + logos[0].r ) {
             let c1 = logos[0]
             let c2 = logos[1]
 
-
-
-
-            
-
+            ricochetCircle1()
+            ricochetCircle2()
 
         }
     }
+    function ricochetCircle1() {
+        let c1 = logos[0]
+        let c2 = logos[1]
+        //Get new x velocity for circle 1
+        c1.vx = c1.vx - (( 2 * c2.r ) / ( c1.r + c2.r )) * ((( c1.vx - c2.vx ) * ( c1.x - c2.x )) / Math.pow( c1.x - c2.x, 2 )) * ( c1.x - c2.x )
+
+        //Get new y velocity for circle 1
+        c1.vy = c1.vy - (( 2 * c2.r ) / ( c1.r + c2.r )) * ((( c1.vy - c2.vy ) * ( c1.y - c2.y )) / Math.pow( c1.y - c2.y, 2 )) * ( c1.y - c2.y )       
+        
+
+        
+    }
+
+    function ricochetCircle2() {
+        let c1 = logos[0]
+        let c2 = logos[1]
+        //Get new x velocity for circle 2
+        c2.vx = c2.vx - (( 2 * c1.r ) / ( c2.r + c1.r )) * ((( c2.vx - c1.vx ) * ( c2.x - c1.x )) / Math.pow( c2.x - c1.x, 2 )) * ( c2.x - c1.x )
+
+        //Get new y velocity for circle 2
+        c2.vy = c2.vy - (( 2 * c1.r ) / ( c2.r + c1.r )) * ((( c2.vy - c1.vy ) * ( c2.y - c1.y )) / Math.pow( c2.y - c1.y, 2 )) * ( c2.y - c1.y )
+
+
+    }
+
+
     requestAnimationFrame(draw)
 }
 
