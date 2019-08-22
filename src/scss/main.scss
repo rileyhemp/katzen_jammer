@@ -6,11 +6,136 @@ canvas {
 }
 
 body {
-    background-image: url('../../dist/img/cat.png');
+    //background-image: url('../../dist/img/cat.png');
+    background-color: black;
     overflow: hidden;
+    font-family: titling-gothic-fb-wide, sans-serif;
 }
 
-.home {
-    transform: scale(1);
-    overflow-y: scroll;
+.flex {
+    display: flex;
+}
+
+.justify {
+    justify-content: space-between;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.slide{
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 16pt;
+    height: 100vh;
+}
+
+.active {
+    display: flex;
+}
+
+.main {
+    margin: 0 10%;
+}
+
+h1 {
+    font-family: titling-gothic-fb-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 16pt;
+}
+
+.bottom {
+    margin: 2rem 0;
+    position: relative;
+    bottom: 0;
+}
+
+.logo {
+    height: 20vh;
+    width: 40vh;
+    img {
+        object-fit: contain;
+    }
+}
+
+.quiz {
+    padding: 0 3rem;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: -1rem;
+    }
+}
+
+.question {
+    background-color: black;
+}
+
+.button-container   {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 2rem 0;
+}
+
+.button {
+    width: 187px;
+    height: 187px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-bar {
+    display: flex;
+    color: white;
+    font-size: 28px;
+    margin: 2rem 0 4rem;
+    li {
+        margin-right: 2rem;
+        width: 13px;
+        height: 13px;
+        &.active {
+            color: black;
+            position: relative;
+            z-index: 2;
+            &:after {
+                content: '';
+                width: 37px;
+                height: 37px;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+                z-index: -1;
+                top: -6px;
+                left: -9px;
+            }
+        }
+    }
 }
