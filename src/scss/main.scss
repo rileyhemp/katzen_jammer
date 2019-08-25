@@ -1,15 +1,64 @@
 @import "../../dist/css/reset.css";
+@import"../scss/variables";
+
+body {
+    overflow: hidden;
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-family: inherit;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    padding: 0;
+}
 
 canvas {
     background-color: rgba(0,0,0,0) !important;
     transition: all .5s;
 }
 
-body {
-    //background-image: url('../../dist/img/cat.png');
-    background-color: black;
-    overflow: hidden;
+h1 {
     font-family: titling-gothic-fb-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 29px;
+    margin-bottom: 1rem;
+    line-height: 41px;
+}
+
+label {
+    display: block;
+    font-family: titling-gothic-fb-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 19px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 13px;
+    cursor: pointer;
+    transform-origin: bottom right;
+    transition: color 0.2s, font-size 0.5s;
+    transform: scale(1)
+}
+
+input:-internal-autofill-selected {
+    background-color: rgba(0,0,0,0) !important;
 }
 
 .flex {
@@ -20,122 +69,309 @@ body {
     justify-content: space-between;
 }
 
+.relative {
+    position: relative;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+    width: 100%;
+}
+
 .uppercase {
     text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+    font-family: titling-gothic-fb-wide, sans-serif;
+}
+
+.black {
+    color: rgba(255, 255, 255, 0.3) !important;
+    * {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+}
+
+.white {
+    color: white !important;
+    * {
+        color: white !important;
+    }
 }
 
 .inner-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
-
-.slide{
-    display: none;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
-    font-size: 16pt;
-    height: 100vh;
-}
-
-.active {
-    display: flex;
-}
-
-.main {
-    margin: 0 10%;
-}
-
-h1 {
-    font-family: titling-gothic-fb-wide, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
-    font-size: 16pt;
-}
-
-.bottom {
-    margin: 2rem 0;
     position: relative;
-    bottom: 0;
-}
-
-.logo {
-    height: 20vh;
-    width: 40vh;
-    img {
-        object-fit: contain;
-    }
-}
-
-.quiz {
-    padding: 0 3rem;
-}
-
-.link {
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
+    padding: 0 2rem;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-between;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     background-color: black;
+    margin-bottom: 1rem;
+    //Covers up something in the top left corner until I can think of a permanent fix
+    &:after {
+        content: '';
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        background-color: black;
+        left: 0;
+        top: 0;
+    }
     div {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-top: -1rem;
+        &:last-child {
+            text-align: right;
+        }
+    }
+    .logo {
+        img {
+            object-fit: contain;
+            height: 25vw;
+            width: 25vw;
+            padding: 0.5rem 0 0 0.5rem;
+        }
     }
 }
 
-.question {
-    background-color: black;
+.headline {
+    margin: 0 10%;
 }
 
 .button-container   {
     display: flex;
     justify-content: center;
-    margin: 0 0 2rem 0;
+    transform: rotate(0deg);
+    transition: all .5s cubic-bezier(0.750, 0.050, 0.000, 1.000);
 }
 
 .button {
-    width: 187px;
-    height: 187px;
+    width: 158px;
+    height: 158px;
     background-color: white;
     border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    .button-img {
+    width: 158px;
+    height: 158px;
+    position: absolute;
+    background-repeat: no-repeat;
+        &.name-banner {
+            display: none;
+            background-image: url('../../dist/img/buttons/name\ background.svg');
+            transform: scaleY(.7) scaleX(.9) translate(-21px, -99px) rotate(-12deg);
+            z-index: 2;
+        }
+        &.q1 {
+            transform: scale(0.4) translate(-118px, 10px);
+            z-index: 10;
+        }
+        &.q2 {
+            transform: scale(0.4) translate(141px, 41px) rotate(13deg);
+            z-index: 2;
+        }
+        &.q3 {
+            transform: scale(0.35) translate(120px, -90px);
+            z-index: 10;
+        }
+        &.q4 {
+            transform: scale(.7) translate(-6px, 41px) rotate(0deg);
+            z-index: 2;
+        }
+        &.q5 {
+            transform: scale(0.4) translate(91px, 161px);
+            z-index: 2;
+        }
+        &.q6 {
+            transform: scale(.4) translate(-11px, -67px);
+            z-index: 2;
+        }
+        &.q7 {
+            transform: scale(0.4) translate(-56px, 163px) rotate(25deg);
+            z-index: 2;
+        }
+        &.q8 {
+            background-size: 110%;
+            background-repeat: no-repeat;
+            background-position-x: -10px;
+            background-position-y: -10px;
+            z-index: 1;
+        }
+    }
 }
 
 .progress-bar {
     display: flex;
+    justify-content: space-between;
     color: white;
-    font-size: 28px;
-    margin: 2rem 0 4rem;
+    font-size: 19px;
+    margin: 1.5rem 0.5rem 1.5rem;
+    transform: translateX(0);
+    transition: transform .5s cubic-bezier(0.750, 0.050, 0.000, 1.000);
     li {
-        margin-right: 2rem;
         width: 13px;
         height: 13px;
+        //transition: 500ms ease-in;
+        text-align: center;
+        position: relative;
+        &:after {
+            visibility: hidden;
+            opacity: 0;
+            content: '';
+            transform: rotateY(90deg);
+            transition: transform .5s cubic-bezier(0.750, 0.050, 0.000, 1.000), opacity 0.5s;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+            top: -7px;
+            left: -7px;
+        }
         &.active {
             color: black;
             position: relative;
             z-index: 2;
             &:after {
-                content: '';
-                width: 37px;
-                height: 37px;
-                background-color: white;
-                border-radius: 50%;
-                position: absolute;
-                z-index: -1;
-                top: -6px;
-                left: -9px;
+                transform: rotateY(1080deg) ;
+                visibility: visible;
+                opacity: 1;
             }
         }
     }
 }
+
+.bottom {
+    margin-bottom: 2rem;
+    z-index: 101;
+}
+
+.start {
+    display: none;
+    flex-direction: row-reverse;
+}
+
+.contact-info {
+    input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid white;
+        margin: .75rem 0 1.25rem 0;
+        width: 70vw;
+        max-width: 400px;
+    }
+}
+
+.test {
+    position: absolute;
+}
+
+//Animated Quiz 
+
+.quiz-container {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.quiz {
+    margin-top: 1rem;
+    display: flex;
+    position: absolute;
+    width: 900vw;
+    left: 0;
+    transition: all .5s cubic-bezier(0.750, 0.050, 0.000, 1.000);
+    z-index: 101;
+    &:before {
+        content: "Hello (insert name)";
+        position: absolute;
+        z-index: 101;
+        top: -46px;
+        left: 810vw;
+        font-size: 24px;
+        color: white;
+    }
+    li {
+        width: 90vw;
+        display: inline-block;
+        position: relative;
+        transition: all .5s cubic-bezier(0.750, 0.050, 0.000, 1.000);
+        margin-right: 2rem;
+        * {
+            transition: all 0.1s;
+        }
+    }
+}
+
+.slide {
+    display: flex;
+    color: white;
+    transition: 0.4s;
+    button {
+        display: inline;
+        text-align: left;
+        width: 90%;
+        line-height: 23px;
+    }
+}
+
+.confirm {
+    display: none; 
+    transform: scale(1.25);
+}
+
+.greeting {
+    font-size: 24px;
+    line-height: 34px;
+    margin-bottom: 0.5rem;
+}
+
+.calender {
+    margin-bottom: 0.5rem;
+}
+
+.next {
+    font-size: 16px;
+}
+
+.contact-info {
+    input {
+        color: white;
+        font-family: inherit;
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

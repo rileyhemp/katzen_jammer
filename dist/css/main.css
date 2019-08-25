@@ -1,14 +1,68 @@
 @import url(../../dist/css/reset.css);
+body {
+	overflow: hidden;
+}
+
+button {
+	outline: none;
+	border: none;
+	background-color: transparent;
+	color: white;
+	font-family: inherit;
+	text-transform: uppercase;
+	margin-top: 0.75rem;
+	padding: 0;
+}
+
 canvas {
 	background-color: rgba(0, 0, 0, 0) !important;
 	-webkit-transition: all .5s;
 	transition: all .5s;
 }
 
-body {
-	background-color: black;
-	overflow: hidden;
+h1 {
 	font-family: titling-gothic-fb-wide, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: white;
+	font-size: 29px;
+	margin-bottom: 1rem;
+	line-height: 41px;
+}
+
+label {
+	display: block;
+	font-family: titling-gothic-fb-wide, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: white;
+	font-size: 19px;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 13px;
+	line-height: 19px;
+}
+
+.link {
+	color: white;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 13px;
+	cursor: pointer;
+	-webkit-transform-origin: bottom right;
+	    -ms-transform-origin: bottom right;
+	        transform-origin: bottom right;
+	-webkit-transition: color 0.2s, font-size 0.5s;
+	transition: color 0.2s, font-size 0.5s;
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
+}
+
+input:-internal-autofill-selected {
+	background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .flex {
@@ -21,8 +75,43 @@ body {
 	        justify-content: space-between;
 }
 
+.relative {
+	position: relative;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+	width: 100%;
+}
+
 .uppercase {
 	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: black;
+	overflow: hidden;
+	font-family: titling-gothic-fb-wide, sans-serif;
+}
+
+.black {
+	color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.black * {
+	color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.white {
+	color: white !important;
+}
+
+.white * {
+	color: white !important;
 }
 
 .inner-wrapper {
@@ -31,66 +120,12 @@ body {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	        flex-direction: column;
-	width: 100%;
-	height: 100%;
-	-webkit-box-pack: center;
-	        justify-content: center;
-}
-
-.slide {
-	display: none;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	        flex-direction: column;
-	flex-wrap: wrap;
-	font-weight: 400;
-	font-style: normal;
-	color: white;
-	font-size: 16pt;
-	height: 100vh;
-}
-
-.active {
-	display: -webkit-box;
-	display: flex;
-}
-
-.main {
-	margin: 0 10%;
-}
-
-h1 {
-	font-family: titling-gothic-fb-wide, sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	color: white;
-	font-size: 16pt;
-}
-
-.bottom {
-	margin: 2rem 0;
 	position: relative;
-	bottom: 0;
-}
-
-.logo {
-	height: 20vh;
-	width: 40vh;
-}
-
-.logo img {
-	-o-object-fit: contain;
-	   object-fit: contain;
-}
-
-.quiz {
-	padding: 0 3rem;
-}
-
-.link {
-	color: white;
-	text-decoration: none;
-	font-size: 13px;
+	padding: 0 2rem;
+	width: 100%;
+	height: 100vh;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
 }
 
 .header {
@@ -99,6 +134,17 @@ h1 {
 	-webkit-box-pack: justify;
 	        justify-content: space-between;
 	background-color: black;
+	margin-bottom: 1rem;
+}
+
+.header:after {
+	content: '';
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	background-color: black;
+	left: 0;
+	top: 0;
 }
 
 .header div {
@@ -109,11 +155,22 @@ h1 {
 	        flex-direction: column;
 	-webkit-box-pack: center;
 	        justify-content: center;
-	margin-top: -1rem;
 }
 
-.question {
-	background-color: black;
+.header div:last-child {
+	text-align: right;
+}
+
+.header .logo img {
+	-o-object-fit: contain;
+	   object-fit: contain;
+	height: 25vw;
+	width: 25vw;
+	padding: 0.5rem 0 0 0.5rem;
+}
+
+.headline {
+	margin: 0 10%;
 }
 
 .button-container {
@@ -121,28 +178,137 @@ h1 {
 	display: flex;
 	-webkit-box-pack: center;
 	        justify-content: center;
-	margin: 0 0 2rem 0;
+	-webkit-transform: rotate(0deg);
+	    -ms-transform: rotate(0deg);
+	        transform: rotate(0deg);
+	-webkit-transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
 }
 
 .button {
-	width: 187px;
-	height: 187px;
+	width: 158px;
+	height: 158px;
 	background-color: white;
 	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.button .button-img {
+	width: 158px;
+	height: 158px;
+	position: absolute;
+	background-repeat: no-repeat;
+}
+
+.button .button-img.name-banner {
+	display: none;
+	background-image: url("../../dist/img/buttons/name background.svg");
+	-webkit-transform: scaleY(0.7) scaleX(0.9) translate(-21px, -99px) rotate(-12deg);
+	    -ms-transform: scaleY(0.7) scaleX(0.9) translate(-21px, -99px) rotate(-12deg);
+	        transform: scaleY(0.7) scaleX(0.9) translate(-21px, -99px) rotate(-12deg);
+	z-index: 2;
+}
+
+.button .button-img.q1 {
+	-webkit-transform: scale(0.4) translate(-118px, 10px);
+	    -ms-transform: scale(0.4) translate(-118px, 10px);
+	        transform: scale(0.4) translate(-118px, 10px);
+	z-index: 10;
+}
+
+.button .button-img.q2 {
+	-webkit-transform: scale(0.4) translate(141px, 41px) rotate(13deg);
+	    -ms-transform: scale(0.4) translate(141px, 41px) rotate(13deg);
+	        transform: scale(0.4) translate(141px, 41px) rotate(13deg);
+	z-index: 2;
+}
+
+.button .button-img.q3 {
+	-webkit-transform: scale(0.35) translate(120px, -90px);
+	    -ms-transform: scale(0.35) translate(120px, -90px);
+	        transform: scale(0.35) translate(120px, -90px);
+	z-index: 10;
+}
+
+.button .button-img.q4 {
+	-webkit-transform: scale(0.7) translate(-6px, 41px) rotate(0deg);
+	    -ms-transform: scale(0.7) translate(-6px, 41px) rotate(0deg);
+	        transform: scale(0.7) translate(-6px, 41px) rotate(0deg);
+	z-index: 2;
+}
+
+.button .button-img.q5 {
+	-webkit-transform: scale(0.4) translate(91px, 161px);
+	    -ms-transform: scale(0.4) translate(91px, 161px);
+	        transform: scale(0.4) translate(91px, 161px);
+	z-index: 2;
+}
+
+.button .button-img.q6 {
+	-webkit-transform: scale(0.4) translate(-11px, -67px);
+	    -ms-transform: scale(0.4) translate(-11px, -67px);
+	        transform: scale(0.4) translate(-11px, -67px);
+	z-index: 2;
+}
+
+.button .button-img.q7 {
+	-webkit-transform: scale(0.4) translate(-56px, 163px) rotate(25deg);
+	    -ms-transform: scale(0.4) translate(-56px, 163px) rotate(25deg);
+	        transform: scale(0.4) translate(-56px, 163px) rotate(25deg);
+	z-index: 2;
+}
+
+.button .button-img.q8 {
+	background-size: 110%;
+	background-repeat: no-repeat;
+	background-position-x: -10px;
+	background-position-y: -10px;
+	z-index: 1;
 }
 
 .progress-bar {
 	display: -webkit-box;
 	display: flex;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
 	color: white;
-	font-size: 28px;
-	margin: 2rem 0 4rem;
+	font-size: 19px;
+	margin: 1.5rem 0.5rem 1.5rem;
+	-webkit-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	        transform: translateX(0);
+	-webkit-transition: -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: transform 0.5s cubic-bezier(0.75, 0.05, 0, 1), -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
 }
 
 .progress-bar li {
-	margin-right: 2rem;
 	width: 13px;
 	height: 13px;
+	text-align: center;
+	position: relative;
+}
+
+.progress-bar li:after {
+	visibility: hidden;
+	opacity: 0;
+	content: '';
+	-webkit-transform: rotateY(90deg);
+	        transform: rotateY(90deg);
+	-webkit-transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: transform 0.5s cubic-bezier(0.75, 0.05, 0, 1), opacity 0.5s;
+	transition: transform 0.5s cubic-bezier(0.75, 0.05, 0, 1), opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	width: 30px;
+	height: 30px;
+	background-color: white;
+	border-radius: 50%;
+	position: absolute;
+	z-index: -1;
+	top: -7px;
+	left: -7px;
 }
 
 .progress-bar li.active {
@@ -152,15 +318,119 @@ h1 {
 }
 
 .progress-bar li.active:after {
-	content: '';
-	width: 37px;
-	height: 37px;
-	background-color: white;
-	border-radius: 50%;
+	-webkit-transform: rotateY(1080deg);
+	        transform: rotateY(1080deg);
+	visibility: visible;
+	opacity: 1;
+}
+
+.bottom {
+	margin-bottom: 2rem;
+	z-index: 101;
+}
+
+.start {
+	display: none;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	        flex-direction: row-reverse;
+}
+
+.contact-info input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid white;
+	margin: .75rem 0 1.25rem 0;
+	width: 70vw;
+	max-width: 400px;
+}
+
+.test {
 	position: absolute;
-	z-index: -1;
-	top: -6px;
-	left: -9px;
+}
+
+.quiz-container {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.quiz {
+	margin-top: 1rem;
+	display: -webkit-box;
+	display: flex;
+	position: absolute;
+	width: 900vw;
+	left: 0;
+	-webkit-transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	z-index: 101;
+}
+
+.quiz:before {
+	content: "Hello (insert name)";
+	position: absolute;
+	z-index: 101;
+	top: -46px;
+	left: 810vw;
+	font-size: 24px;
+	color: white;
+}
+
+.quiz li {
+	width: 90vw;
+	display: inline-block;
+	position: relative;
+	-webkit-transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	transition: all 0.5s cubic-bezier(0.75, 0.05, 0, 1);
+	margin-right: 2rem;
+}
+
+.quiz li * {
+	-webkit-transition: all 0.1s;
+	transition: all 0.1s;
+}
+
+.slide {
+	display: -webkit-box;
+	display: flex;
+	color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.slide button {
+	display: inline;
+	text-align: left;
+	width: 90%;
+	line-height: 23px;
+}
+
+.confirm {
+	display: none;
+	-webkit-transform: scale(1.25);
+	    -ms-transform: scale(1.25);
+	        transform: scale(1.25);
+}
+
+.greeting {
+	font-size: 24px;
+	line-height: 34px;
+	margin-bottom: 0.5rem;
+}
+
+.calender {
+	margin-bottom: 0.5rem;
+}
+
+.next {
+	font-size: 16px;
+}
+
+.contact-info input {
+	color: white;
+	font-family: inherit;
+	font-size: 16px;
 }
 
 /*# sourceMappingURL=main.css.map */
