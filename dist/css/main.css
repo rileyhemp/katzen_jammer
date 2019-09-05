@@ -1,6 +1,7 @@
 @import url(../../dist/css/reset.css);
 body {
 	overflow: hidden;
+	background: black;
 }
 
 button {
@@ -12,6 +13,30 @@ button {
 	text-transform: uppercase;
 	margin-top: 0.75rem;
 	padding: 0;
+	cursor: pointer;
+}
+
+.name-curve {
+	position: relative;
+	z-index: 101;
+	top: 49%;
+	left: 3%;
+	z-index: 101;
+	-webkit-transform: scalex(0.9) rotate(-5deg);
+	    -ms-transform: scalex(0.9) rotate(-5deg);
+	        transform: scalex(0.9) rotate(-5deg);
+	z-index: 101;
+}
+
+.name-curve path {
+	fill: transparent;
+}
+
+.name-curve text {
+	fill: black;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 1px;
 }
 
 canvas {
@@ -289,6 +314,7 @@ body {
 	height: 13px;
 	text-align: center;
 	position: relative;
+	cursor: pointer;
 }
 
 .progress-bar li:after {
@@ -431,6 +457,124 @@ body {
 	color: white;
 	font-family: inherit;
 	font-size: 16px;
+}
+
+h1 {
+	font-size: 13px;
+	text-align: center;
+	font-weight: 400;
+	margin: 0 !important;
+	line-height: 28px;
+	margin-bottom: 3rem !important;
+}
+
+@media screen and (min-width: 768px) {
+	.header .logo img {
+		width: 7rem;
+		height: 7rem;
+	}
+	.progress-bar {
+		margin-bottom: 3rem;
+		width: 50%;
+	}
+	.quiz-container {
+		width: 95%;
+	}
+	h1 {
+		font-size: 16px;
+		text-align: center;
+		font-weight: 400;
+		margin: 0 !important;
+	}
+	.headline {
+		margin-bottom: 2.5rem !important;
+	}
+	.balls canvas {
+		pointer-events: none;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	body {
+		background-image: url("../../dist/img/cat@2x.png");
+	}
+	.header {
+		background-color: transparent;
+	}
+	.header:after {
+		display: none;
+	}
+	.new-member {
+		margin-right: 4rem;
+	}
+	h1 {
+		font-size: 26px;
+		text-align: center;
+		font-weight: 400;
+		padding: 0 4rem;
+	}
+	.balls {
+		-webkit-transform: translateX(-30px);
+		    -ms-transform: translateX(-30px);
+		        transform: translateX(-30px);
+	}
+	.header .logo img.logo-mobile {
+		display: none;
+	}
+	.header .logo img.logo-desktop {
+		display: inline-block;
+		width: 8rem;
+		height: 8rem;
+		-o-object-fit: cover;
+		   object-fit: cover;
+	}
+	.logo div {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		        flex-direction: row;
+	}
+	.progress-bar {
+		width: 25%;
+		-webkit-transform: translatey(-10vh);
+		    -ms-transform: translatey(-10vh);
+		        transform: translatey(-10vh);
+	}
+	.button-container {
+		-webkit-box-pack: end;
+		        justify-content: flex-end;
+		margin-right: 5rem;
+		-webkit-transform-origin: right;
+		    -ms-transform-origin: right;
+		        transform-origin: right;
+		-webkit-transform: scale(1.5) translateY(16vh);
+		    -ms-transform: scale(1.5) translateY(16vh);
+		        transform: scale(1.5) translateY(16vh);
+		position: relative;
+		z-index: 300;
+		pointer-events: none;
+	}
+	.quiz-container {
+		width: 90%;
+	}
+	label {
+		font-size: 38px;
+		margin: 1rem 0;
+	}
+	.quiz-container {
+		height: 125%;
+		-webkit-transform: translateY(-10%);
+		    -ms-transform: translateY(-10%);
+		        transform: translateY(-10%);
+	}
+	.contact-info input {
+		font-size: 36px;
+		max-width: 500px;
+	}
+	.next {
+		font-size: 24px;
+	}
 }
 
 /*# sourceMappingURL=main.css.map */

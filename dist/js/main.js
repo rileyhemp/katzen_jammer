@@ -55,6 +55,7 @@ function nextSlide() {
   //Adds their name
   if (currentIndex === 0) {
     document.querySelector('.name-banner').style.display = "initial";
+    document.querySelector('#user-name').textContent = document.querySelector('#name').value;
   }
 
   next.textContent = "Next";

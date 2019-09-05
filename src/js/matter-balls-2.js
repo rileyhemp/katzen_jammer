@@ -2,6 +2,11 @@
 //Set width and height
 let width = window.innerWidth
 let height = window.innerHeight * .7
+if ( window.outerWidth < 1024 ) {
+    height = window.innerHeight * .85
+} else if ( window.outerWidth < 768 ) {
+    height = window.innerHeight * .4
+}
 
 //Module aliases for Matter.js
 let Engine = Matter.Engine
@@ -49,20 +54,42 @@ let circleB = Bodies.circle(width-width*.3, height/2, 140,{
     }
 });
 
+//Create smaller circles on mobile
+if ( window.outerWidth < 768 ) {
+    circleA = Bodies.circle(width*.2, height/2, 80, {
+        render: {
+            sprite: {
+                texture: "http://circuslabs.net/~riley.hemphill/Katzen%20Jammer/katzen.png",
+                xScale: 0.27,
+                yScale: 0.27
+            }
+        }
+    });
+    circleB = Bodies.circle(width*.8, height/2, 80, {
+        render: {
+            sprite: {
+                texture: "http://circuslabs.net/~riley.hemphill/Katzen%20Jammer/katzen.png",
+                xScale: 0.27,
+                yScale: 0.27
+            }
+        }
+    });    
+}
+
 //Create the walls
-let topSide = Bodies.rectangle(width/2, 0, width, 5, { 
+let topSide = Bodies.rectangle(width/2, 10, width, 10, { 
     isStatic: true,
     render: {opacity: 0}
 });
-let bottomSide = Bodies.rectangle(width/2, height-175, width, 10, { 
+let bottomSide = Bodies.rectangle(width/2, height, width, 20, { 
     isStatic: true, 
     render: {opacity: 0}
 });
-let rightSide = Bodies.rectangle(width, height/2, 5, height, { 
+let rightSide = Bodies.rectangle(width-10, height/2, 10, height, { 
     isStatic: true, 
     render: {opacity: 0}
 });
-let leftSide = Bodies.rectangle(0, height/2, 5, height, { 
+let leftSide = Bodies.rectangle(0, height/2, 10, height, { 
     isStatic: true, 
     render: {opacity: 0}
 });
@@ -138,11 +165,11 @@ setTimeout(function(){
     let timer = function() {
         interval++
         Body.setVelocity(circleA, {
-            x: 1.25 * interval / 70,
+            x: 2.5 * interval / 70,
             y: 0.1 * interval / 70
         })
         Body.setVelocity(circleB, {
-            x: -1.25 * interval / 70,
+            x: -2.5 * interval / 70,
             y: 0.1 * interval / 70
         })
         if (interval <= 30) {
@@ -174,13 +201,13 @@ function grav(rate) {
 
 //Keep the balls from rotating
 
-
+/*
 Events.on(engine, "afterUpdate", function(){
     circleA.angle = 0
     circleB.angle = 0
     
 })
-
+*/
 
 //Makes the balls go crazy
 
@@ -204,10 +231,10 @@ document.body.addEventListener('click', function(){
 })
 
 //Lets you throw the balls
+
 var mouseConstraint = Matter.MouseConstraint.create(engine, {
-    element: document.body,
     constraint: {
-        stiffness: 1,
+        stiffness: 0.0008,
          angularStiffness: 1
     }
 });
@@ -223,3 +250,4 @@ Engine.run(engine);
 
 //Run the renderer
 Render.run(render);
+

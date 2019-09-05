@@ -3,6 +3,8 @@
 
 body {
     overflow: hidden;
+    background: black;
+
 }
 
 button {
@@ -14,6 +16,26 @@ button {
     text-transform: uppercase;
     margin-top: 0.75rem;
     padding: 0;
+    cursor: pointer;
+}
+
+.name-curve {
+    position: relative;
+    z-index: 101;
+    top: 49%;
+    left: 3%;
+    z-index: 101;
+    transform: scalex(0.90) rotate(-5deg);
+    path {
+        fill: transparent;
+    }
+    text {
+    fill: black;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    }
+    z-index: 101;
 }
 
 canvas {
@@ -29,6 +51,7 @@ h1 {
     font-size: 29px;
     margin-bottom: 1rem;
     line-height: 41px;
+
 }
 
 label {
@@ -230,6 +253,7 @@ body {
         //transition: 500ms ease-in;
         text-align: center;
         position: relative;
+        cursor: pointer;
         &:after {
             visibility: hidden;
             opacity: 0;
@@ -360,9 +384,126 @@ body {
     }
 }
 
+h1 {
+    font-size: 13px;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 !important;
+    line-height: 28px;
+    margin-bottom: 3rem !important;
+}
 
+@media screen and (min-width:768px) {
+    .header .logo img {
+        width: 7rem;
+        height: 7rem;
+    }
 
+    .progress-bar {
+        margin-bottom: 3rem;
+        width: 50%;
+    }
 
+    .quiz-container {
+        width: 95%;
+    }
+    h1 {
+        font-size: 16px;
+        text-align: center;
+        font-weight: 400;
+        margin: 0 !important;
+    }
+
+    .headline {
+        margin-bottom: 2.5rem !important;
+    }
+
+    .balls canvas {
+        pointer-events: none;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    body {
+        background-image: url('../../dist/img/cat@2x.png');
+    }
+    .header {
+        background-color: transparent;
+        &:after {
+            display: none;
+        }
+    }
+
+    .new-member {
+        margin-right: 4rem;
+    }
+
+    h1 {
+        font-size: 26px;
+        text-align: center;
+        font-weight: 400;
+        padding: 0 4rem;
+    }
+
+    .balls {
+        transform: translateX(-30px)
+    }
+
+    .header .logo img {
+        &.logo-mobile {
+            display: none;
+        }
+        &.logo-desktop {
+            display: inline-block;
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+        }
+    }
+
+    .logo div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .progress-bar {
+        width: 25%;
+        transform: translatey(-10vh)
+    }
+
+    .button-container {
+        justify-content: flex-end;
+        margin-right: 5rem;
+        transform-origin: right;
+        transform: scale(1.50) translateY(16vh);
+        position: relative;
+        z-index: 300;
+        pointer-events: none;
+    }
+
+    .quiz-container {
+        width: 90%;
+    }
+
+    label {
+        font-size: 38px;
+        margin: 1rem 0;
+    }
+
+    .quiz-container {
+        height: 125%;
+        transform: translateY(-10%);
+    }
+
+    .contact-info input {
+        font-size: 36px;
+        max-width: 500px;
+    }
+
+    .next {
+        font-size: 24px;
+    }
+}
 
 
 

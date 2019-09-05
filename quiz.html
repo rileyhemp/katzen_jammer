@@ -16,12 +16,24 @@
                 <div class="relative">
                     <div class="header">
                         <div><a href="./index.html" class="link uppercase">Home</a></div>
-                        <div class="logo"><img src="../../dist/img/logo.gif" alt=""></div>                                        
+                        <div class="logo">
+                            <img class="logo-mobile" src="../../dist/img/logo.gif">
+                            <div>
+                                <img class="logo-desktop" src="http://circuslabs.net/~riley.hemphill/Katzen%20Jammer/katzen.png">
+                                <img class="logo-desktop" src="http://circuslabs.net/~riley.hemphill/Katzen%20Jammer/jammer.png">
+                            </div>
+                        </div>                                        
                         <div><a href="#" class="link uppercase right">Sign in</a></div>
                     </div>                      
                     <div class="button-container">
                         <div class="button">
-                            <div class="name-banner button-img">                              
+                            <div class="name-banner button-img">       
+                                <svg class="name-curve" viewBox="0 0 500 500">
+                                    <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+                                    <text width="600">
+                                        <textPath id="user-name" alignment-baseline="top" xlink:href="#curve"></textPath>
+                                    </text>
+                                </svg>                                                       
                             </div>
                             <div class="q1 button-img"></div>
                             <div class="q2 button-img"></div>
@@ -46,7 +58,7 @@
                     </ul>
                     <div class="quiz-container">
                         <ul class="quiz">
-                            <li class="slide">
+                            <li class="slide active">
                                 <div class="contact-info">
                                     <label for="name">Name</label><input autocomplete="off" type="text" id="name" name="name">
                                     <label for="email">Email</label><input autocomplete="off" type="text" id="email" name="email">
