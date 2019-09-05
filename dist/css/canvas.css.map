@@ -1,0 +1,1 @@
+{"version":3,"sources":["canvas.scss","canvas.css"],"names":[],"mappings":"AAAA;CACI,gBAAgB;ACCpB","file":"canvas.css","sourcesContent":["#canvas {\r\n    overflow: hidden;\r\n}\r\n\r\n//<canvas id=\"canvas\">This browser does not support HTML Canvas.</canvas>\r\n//<script src=\"./dist/js/balls.js\"></script>","#canvas {\n\toverflow: hidden;\n}\n"]}
