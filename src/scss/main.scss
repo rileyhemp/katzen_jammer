@@ -38,6 +38,10 @@ button {
     z-index: 101;
 }
 
+.slide button, .slide h2 {
+    font-size: .875rem;
+}
+
 canvas {
     background-color: rgba(0,0,0,0) !important;
     transition: all .5s;
@@ -82,6 +86,10 @@ p {
 
 input:-internal-autofill-selected {
     background-color: rgba(0,0,0,0) !important;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 .flex {
@@ -170,10 +178,6 @@ body {
             padding: 0.5rem 0 0 0.5rem;
         }
     }
-}
-
-.headline {
-    margin: 0 10%;
 }
 
 .button-container   {
@@ -325,7 +329,7 @@ body {
     transition: all .5s cubic-bezier(0.750, 0.050, 0.000, 1.000);
     z-index: 101;
     &:before {
-        content: "Hello (insert name)";
+        content: attr(name);
         position: absolute;
         z-index: 101;
         top: -46px;
@@ -385,12 +389,27 @@ body {
 }
 
 h1 {
-    font-size: 13px;
-    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
     font-weight: 400;
-    margin: 0 !important;
-    line-height: 28px;
-    margin-bottom: 3rem !important;
+    margin-bottom: 1.5rem;
+    &.homescreen {
+        font-size: 13px;
+        line-height: 28px;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+}
+
+.calender {
+    margin-top: 2rem;
+}
+
+.header .logo img {
+    &.logo-desktop {
+        display: none;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -399,23 +418,52 @@ h1 {
         height: 7rem;
     }
 
+    .greeting {
+        margin-top: 2rem;
+    }
+
+    .calender {
+        margin-top: 5rem;
+    }
+
     .progress-bar {
-        margin-bottom: 3rem;
+        margin-top: 5rem;
         width: 50%;
     }
 
     .quiz-container {
         width: 95%;
     }
+
+    .quiz {
+        margin-top:3rem;
+    }
+
+    .button {
+        transform: scale(1.25) translateY(1rem);
+    }
+
     h1 {
-        font-size: 16px;
-        text-align: center;
+        font-size: 1.5rem;
         font-weight: 400;
-        margin: 0 !important;
+        &.homescreen {
+            font-size: 1rem;
+        }
+    }
+
+    .slide button, .slide h2 {
+        font-size: 1rem;
+        line-height: 1.5rem;
+
     }
 
     .headline {
         margin-bottom: 2.5rem !important;
+        margin: 0 10%;
+    }
+
+    .bottom.homescreen {
+        transform: translateY(2rem);
     }
 
     .balls canvas {
@@ -424,8 +472,14 @@ h1 {
 }
 
 @media screen and (min-width:1024px) {
+
+    .progress-bar {
+        width: 25%;
+        margin-bottom: 0;
+    }
+
     body {
-        background-image: url('../../dist/img/cat@2x.png');
+        padding: 0 2rem;
     }
     .header {
         background-color: transparent;
@@ -434,15 +488,43 @@ h1 {
         }
     }
 
+    .quiz {
+        &:before {
+            font-size: 3.5rem;
+        }
+    }
+
+    .greeting {
+        font-size: 3.5rem;
+        padding: 3rem 0 2rem 0;
+        max-width: 70vw;
+        line-height: 4rem;
+    }
+
+    .calender {
+        margin: 3rem 0 .5rem 0;
+    }
+
     .new-member {
         margin-right: 4rem;
     }
 
     h1 {
         font-size: 26px;
-        text-align: center;
+        text-align: left;
         font-weight: 400;
-        padding: 0 4rem;
+        font-size: 2.5rem;
+        white-space: wrap;
+        max-width: 60rem;
+        line-height: 3.5rem;
+        &.homescreen {
+            max-width: unset;
+            font-size: 30px;
+            max-width: 94vw;
+            margin-left: 0;
+            margin-right: 0;
+            text-align: left;
+        }
     }
 
     .balls {
@@ -451,14 +533,9 @@ h1 {
 
     .header .logo img {
         &.logo-mobile {
-            display: none;
+            transform: scale(1.75) translateY(20px);
         }
-        &.logo-desktop {
-            display: inline-block;
-            width: 8rem;
-            height: 8rem;
-            object-fit: cover;
-        }
+
     }
 
     .logo div {
@@ -466,33 +543,40 @@ h1 {
         flex-direction: row;
     }
 
-    .progress-bar {
-        width: 25%;
-        transform: translatey(-10vh)
+    .quiz .slide .contact-info {
+        margin-top: -4rem;
+        transform: scale(0.9);
+        transform-origin: 0 100%;
+    }
+
+    .slide button, .slide h2 {
+        font-size: 1.5rem;
+        line-height: 2rem;
     }
 
     .button-container {
-        justify-content: flex-end;
+
         margin-right: 5rem;
         transform-origin: right;
-        transform: scale(1.50) translateY(16vh);
-        position: relative;
+        transform: scale(1.5) translateY(-50%);
+        position: absolute;
         z-index: 300;
         pointer-events: none;
-    }
-
-    .quiz-container {
-        width: 90%;
+        right: 0;
+        top: 50%;
     }
 
     label {
         font-size: 38px;
         margin: 1rem 0;
     }
-
+    
     .quiz-container {
-        height: 125%;
-        transform: translateY(-10%);
+        width: 90%;
+        height: 50%;
+        top:50%;
+        transform: translateY(-45%);
+        position: absolute;
     }
 
     .contact-info input {

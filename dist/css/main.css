@@ -39,6 +39,10 @@ button {
 	letter-spacing: 1px;
 }
 
+.slide button, .slide h2 {
+	font-size: .875rem;
+}
+
 canvas {
 	background-color: rgba(0, 0, 0, 0) !important;
 	-webkit-transition: all .5s;
@@ -88,6 +92,10 @@ p {
 
 input:-internal-autofill-selected {
 	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+textarea:focus, input:focus {
+	outline: none;
 }
 
 .flex {
@@ -192,10 +200,6 @@ body {
 	height: 25vw;
 	width: 25vw;
 	padding: 0.5rem 0 0 0.5rem;
-}
-
-.headline {
-	margin: 0 10%;
 }
 
 .button-container {
@@ -394,7 +398,7 @@ body {
 }
 
 .quiz:before {
-	content: "Hello (insert name)";
+	content: attr(name);
 	position: absolute;
 	z-index: 101;
 	top: -46px;
@@ -460,12 +464,26 @@ body {
 }
 
 h1 {
-	font-size: 13px;
-	text-align: center;
+	font-size: 1.5rem;
+	line-height: 2rem;
 	font-weight: 400;
-	margin: 0 !important;
+	margin-bottom: 1.5rem;
+}
+
+h1.homescreen {
+	font-size: 13px;
 	line-height: 28px;
-	margin-bottom: 3rem !important;
+	margin-left: 0;
+	margin-right: 0;
+	text-align: center;
+}
+
+.calender {
+	margin-top: 2rem;
+}
+
+.header .logo img.logo-desktop {
+	display: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -473,21 +491,46 @@ h1 {
 		width: 7rem;
 		height: 7rem;
 	}
+	.greeting {
+		margin-top: 2rem;
+	}
+	.calender {
+		margin-top: 5rem;
+	}
 	.progress-bar {
-		margin-bottom: 3rem;
+		margin-top: 5rem;
 		width: 50%;
 	}
 	.quiz-container {
 		width: 95%;
 	}
+	.quiz {
+		margin-top: 3rem;
+	}
+	.button {
+		-webkit-transform: scale(1.25) translateY(1rem);
+		    -ms-transform: scale(1.25) translateY(1rem);
+		        transform: scale(1.25) translateY(1rem);
+	}
 	h1 {
-		font-size: 16px;
-		text-align: center;
+		font-size: 1.5rem;
 		font-weight: 400;
-		margin: 0 !important;
+	}
+	h1.homescreen {
+		font-size: 1rem;
+	}
+	.slide button, .slide h2 {
+		font-size: 1rem;
+		line-height: 1.5rem;
 	}
 	.headline {
 		margin-bottom: 2.5rem !important;
+		margin: 0 10%;
+	}
+	.bottom.homescreen {
+		-webkit-transform: translateY(2rem);
+		    -ms-transform: translateY(2rem);
+		        transform: translateY(2rem);
 	}
 	.balls canvas {
 		pointer-events: none;
@@ -495,8 +538,12 @@ h1 {
 }
 
 @media screen and (min-width: 1024px) {
+	.progress-bar {
+		width: 25%;
+		margin-bottom: 0;
+	}
 	body {
-		background-image: url("../../dist/img/cat@2x.png");
+		padding: 0 2rem;
 	}
 	.header {
 		background-color: transparent;
@@ -504,14 +551,37 @@ h1 {
 	.header:after {
 		display: none;
 	}
+	.quiz:before {
+		font-size: 3.5rem;
+	}
+	.greeting {
+		font-size: 3.5rem;
+		padding: 3rem 0 2rem 0;
+		max-width: 70vw;
+		line-height: 4rem;
+	}
+	.calender {
+		margin: 3rem 0 .5rem 0;
+	}
 	.new-member {
 		margin-right: 4rem;
 	}
 	h1 {
 		font-size: 26px;
-		text-align: center;
+		text-align: left;
 		font-weight: 400;
-		padding: 0 4rem;
+		font-size: 2.5rem;
+		white-space: wrap;
+		max-width: 60rem;
+		line-height: 3.5rem;
+	}
+	h1.homescreen {
+		max-width: unset;
+		font-size: 30px;
+		max-width: 94vw;
+		margin-left: 0;
+		margin-right: 0;
+		text-align: left;
 	}
 	.balls {
 		-webkit-transform: translateX(-30px);
@@ -519,14 +589,9 @@ h1 {
 		        transform: translateX(-30px);
 	}
 	.header .logo img.logo-mobile {
-		display: none;
-	}
-	.header .logo img.logo-desktop {
-		display: inline-block;
-		width: 8rem;
-		height: 8rem;
-		-o-object-fit: cover;
-		   object-fit: cover;
+		-webkit-transform: scale(1.75) translateY(20px);
+		    -ms-transform: scale(1.75) translateY(20px);
+		        transform: scale(1.75) translateY(20px);
 	}
 	.logo div {
 		display: -webkit-box;
@@ -535,38 +600,45 @@ h1 {
 		-webkit-box-direction: normal;
 		        flex-direction: row;
 	}
-	.progress-bar {
-		width: 25%;
-		-webkit-transform: translatey(-10vh);
-		    -ms-transform: translatey(-10vh);
-		        transform: translatey(-10vh);
+	.quiz .slide .contact-info {
+		margin-top: -4rem;
+		-webkit-transform: scale(0.9);
+		    -ms-transform: scale(0.9);
+		        transform: scale(0.9);
+		-webkit-transform-origin: 0 100%;
+		    -ms-transform-origin: 0 100%;
+		        transform-origin: 0 100%;
+	}
+	.slide button, .slide h2 {
+		font-size: 1.5rem;
+		line-height: 2rem;
 	}
 	.button-container {
-		-webkit-box-pack: end;
-		        justify-content: flex-end;
 		margin-right: 5rem;
 		-webkit-transform-origin: right;
 		    -ms-transform-origin: right;
 		        transform-origin: right;
-		-webkit-transform: scale(1.5) translateY(16vh);
-		    -ms-transform: scale(1.5) translateY(16vh);
-		        transform: scale(1.5) translateY(16vh);
-		position: relative;
+		-webkit-transform: scale(1.5) translateY(-50%);
+		    -ms-transform: scale(1.5) translateY(-50%);
+		        transform: scale(1.5) translateY(-50%);
+		position: absolute;
 		z-index: 300;
 		pointer-events: none;
-	}
-	.quiz-container {
-		width: 90%;
+		right: 0;
+		top: 50%;
 	}
 	label {
 		font-size: 38px;
 		margin: 1rem 0;
 	}
 	.quiz-container {
-		height: 125%;
-		-webkit-transform: translateY(-10%);
-		    -ms-transform: translateY(-10%);
-		        transform: translateY(-10%);
+		width: 90%;
+		height: 50%;
+		top: 50%;
+		-webkit-transform: translateY(-45%);
+		    -ms-transform: translateY(-45%);
+		        transform: translateY(-45%);
+		position: absolute;
 	}
 	.contact-info input {
 		font-size: 36px;

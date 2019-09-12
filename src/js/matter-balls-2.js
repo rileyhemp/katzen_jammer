@@ -132,21 +132,37 @@ topSide.restitution = 1
 bottomSide.restitution = 1
 rightSide.restitution = 1
 leftSide.restitution = 1
+topLeft.restitution = 1
+topRight.restitution = 1
+bottomLeft.restitution = 1
+bottomRight.restitution = 1
 
 topSide.friction = 0
 bottomSide.friction = 0
 rightSide.friction = 0
 leftSide.friction = 0
+topLeft.friction = 0
+topRight.friction = 0
+bottomLeft.friction = 0
+bottomRight.friction = 0
 
 topSide.frictionStatic = 0
 bottomSide.frictionStatic = 0
 rightSide.frictionStatic = 0
 leftSide.frictionStatic = 0
+topLeft.frictionStatic = 0
+topRight.frictionStatic = 0
+bottomLeft.frictionStatic = 0
+bottomRight.frictionStatic = 0
 
 topSide.inertia = Infinity
 bottomSide.inertia = Infinity
 rightSide.inertia = Infinity
 leftSide.inertia = Infinity
+topLeft.inertia = Infinity
+topRight.inertia = Infinity
+bottomLeft.inertia = Infinity
+bottomRight.inertia = Infinity
 
 circleA.friction = 0
 circleA.frictionAir = 0
@@ -165,11 +181,11 @@ setTimeout(function(){
     let timer = function() {
         interval++
         Body.setVelocity(circleA, {
-            x: 2.5 * interval / 70,
+            x: 3.5 * interval / 70,
             y: 0.1 * interval / 70
         })
         Body.setVelocity(circleB, {
-            x: -2.5 * interval / 70,
+            x: -3.5 * interval / 70,
             y: 0.1 * interval / 70
         })
         if (interval <= 30) {
@@ -198,6 +214,28 @@ function grav(rate) {
 }
 
 
+//Slow down the balls if they get going too fast
+setInterval(function(){
+    let limit = 25
+    let newCAX = circleA.velocity.x - .1
+    let newCAY = circleA.velocity.y - .1
+    let newCBX = circleB.velocity.x - .1
+    let newCBY = circleB.velocity.y - .1
+
+    if ( circleA.velocity.x > limit ) {
+        Body.setVelocity(circleA, {x: newCAX, y:circleA.velocity.y})
+    }
+    if ( circleA.velocity.y > limit ) {
+        Body.setVelocity(circleA, {x: circleA.velocity.x, y:newCAY})
+    }
+    if ( circleB.velocity.x > limit ) {
+        Body.setVelocity(circleB, {x: newCBX, y:circleB.velocity.y})
+    }
+    if ( circleB.velocity.y > limit ) {
+        Body.setVelocity(circleB, {x: circleB.velocity.x, y:newCBY})
+    }
+}, 10)
+
 
 //Keep the balls from rotating
 
@@ -210,7 +248,7 @@ Events.on(engine, "afterUpdate", function(){
 */
 
 //Makes the balls go crazy
-
+/*
 document.body.addEventListener('click', function(){
 
     Body.applyForce( circleA, {
@@ -229,7 +267,7 @@ document.body.addEventListener('click', function(){
         y: 2
     })
 })
-
+*/
 //Lets you throw the balls
 
 var mouseConstraint = Matter.MouseConstraint.create(engine, {

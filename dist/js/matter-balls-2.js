@@ -129,18 +129,34 @@ topSide.restitution = 1;
 bottomSide.restitution = 1;
 rightSide.restitution = 1;
 leftSide.restitution = 1;
+topLeft.restitution = 1;
+topRight.restitution = 1;
+bottomLeft.restitution = 1;
+bottomRight.restitution = 1;
 topSide.friction = 0;
 bottomSide.friction = 0;
 rightSide.friction = 0;
 leftSide.friction = 0;
+topLeft.friction = 0;
+topRight.friction = 0;
+bottomLeft.friction = 0;
+bottomRight.friction = 0;
 topSide.frictionStatic = 0;
 bottomSide.frictionStatic = 0;
 rightSide.frictionStatic = 0;
 leftSide.frictionStatic = 0;
+topLeft.frictionStatic = 0;
+topRight.frictionStatic = 0;
+bottomLeft.frictionStatic = 0;
+bottomRight.frictionStatic = 0;
 topSide.inertia = Infinity;
 bottomSide.inertia = Infinity;
 rightSide.inertia = Infinity;
 leftSide.inertia = Infinity;
+topLeft.inertia = Infinity;
+topRight.inertia = Infinity;
+bottomLeft.inertia = Infinity;
+bottomRight.inertia = Infinity;
 circleA.friction = 0;
 circleA.frictionAir = 0;
 circleA.frictionStatic = 0.0;
@@ -156,11 +172,11 @@ setTimeout(function () {
   var timer = function timer() {
     interval++;
     Body.setVelocity(circleA, {
-      x: 2.5 * interval / 70,
+      x: 3.5 * interval / 70,
       y: 0.1 * interval / 70
     });
     Body.setVelocity(circleB, {
-      x: -2.5 * interval / 70,
+      x: -3.5 * interval / 70,
       y: 0.1 * interval / 70
     });
 
@@ -186,7 +202,44 @@ function grav(rate) {
     engine.world.gravity.x = counter * -0.05;
     engine.world.gravity.y = counter * 0.05;
   }, 10);
-} //Keep the balls from rotating
+} //Slow down the balls if they get going too fast
+
+
+setInterval(function () {
+  var limit = 25;
+  var newCAX = circleA.velocity.x - .1;
+  var newCAY = circleA.velocity.y - .1;
+  var newCBX = circleB.velocity.x - .1;
+  var newCBY = circleB.velocity.y - .1;
+
+  if (circleA.velocity.x > limit) {
+    Body.setVelocity(circleA, {
+      x: newCAX,
+      y: circleA.velocity.y
+    });
+  }
+
+  if (circleA.velocity.y > limit) {
+    Body.setVelocity(circleA, {
+      x: circleA.velocity.x,
+      y: newCAY
+    });
+  }
+
+  if (circleB.velocity.x > limit) {
+    Body.setVelocity(circleB, {
+      x: newCBX,
+      y: circleB.velocity.y
+    });
+  }
+
+  if (circleB.velocity.y > limit) {
+    Body.setVelocity(circleB, {
+      x: circleB.velocity.x,
+      y: newCBY
+    });
+  }
+}, 10); //Keep the balls from rotating
 
 /*
 Events.on(engine, "afterUpdate", function(){
@@ -197,23 +250,27 @@ Events.on(engine, "afterUpdate", function(){
 */
 //Makes the balls go crazy
 
+/*
+document.body.addEventListener('click', function(){
 
-document.body.addEventListener('click', function () {
-  Body.applyForce(circleA, {
-    x: circleA.position.x,
-    y: circleA.position.y
-  }, {
-    x: 2,
-    y: -1
-  });
-  Body.applyForce(circleB, {
-    x: circleB.position.x,
-    y: circleB.position.y
-  }, {
-    x: -1,
-    y: 2
-  });
-}); //Lets you throw the balls
+    Body.applyForce( circleA, {
+        x: circleA.position.x,
+        y: circleA.position.y,
+    }, {
+        x: 2,
+        y: -1
+    })
+
+    Body.applyForce( circleB, {
+        x: circleB.position.x,
+        y: circleB.position.y,
+    }, {
+        x: -1,
+        y: 2
+    })
+})
+*/
+//Lets you throw the balls
 
 var mouseConstraint = Matter.MouseConstraint.create(engine, {
   constraint: {

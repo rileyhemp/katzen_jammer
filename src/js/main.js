@@ -72,8 +72,15 @@ function nextSlide()
 {
     //Adds their name
     if ( currentIndex === 0 ) {
+        let nameValue = document.querySelector('#name').value
         document.querySelector('.name-banner').style.display = "initial"
-        document.querySelector('#user-name').textContent = document.querySelector('#name').value
+        document.querySelector('#user-name').textContent = nameValue
+        let welcomeMessage = `Hello, ${nameValue.substr(0,nameValue.indexOf(' '))}`
+        if ( nameValue ) {
+            quiz.setAttribute('name', welcomeMessage)
+        } else {
+            quiz.setAttribute('name', "Hello, stranger")
+        }
     }
     
     next.textContent = "Next"

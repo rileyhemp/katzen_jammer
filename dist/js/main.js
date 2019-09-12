@@ -54,8 +54,16 @@ answer.forEach(function (button) {
 function nextSlide() {
   //Adds their name
   if (currentIndex === 0) {
+    var nameValue = document.querySelector('#name').value;
     document.querySelector('.name-banner').style.display = "initial";
-    document.querySelector('#user-name').textContent = document.querySelector('#name').value;
+    document.querySelector('#user-name').textContent = nameValue;
+    var welcomeMessage = "Hello, ".concat(nameValue.substr(0, nameValue.indexOf(' ')));
+
+    if (nameValue) {
+      quiz.setAttribute('name', welcomeMessage);
+    } else {
+      quiz.setAttribute('name', "Hello, stranger");
+    }
   }
 
   next.textContent = "Next";
